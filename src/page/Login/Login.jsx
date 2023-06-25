@@ -7,6 +7,10 @@ import {
     Button,
 } from "@mui/material";
 import { useFormik } from "formik";
+import { useContext } from "react";
+import axios from "axios";
+
+import { AuthContext } from "../../context/AuthContext";
 
 const validate = (values) => {
     const errors = {};
@@ -18,24 +22,24 @@ const validate = (values) => {
 
     if (!values.password) {
         errors.password = "Required";
-    } else if (values.password.length < 8) {
-        errors.password = "Mat khau phai it nhat 8 ky tu";
     }
     return errors;
 };
 
 const Login = () => {
+    const { login, authState } = useContext(AuthContext);
     const formik = useFormik({
         initialValues: {
             username: "",
             password: "",
         },
         validate,
-        onSubmit: (values) => {
+        onSubmit: async (values) => {
             console.log(values);
+            const info = await login(values);
         },
     });
-
+    console.log(authState);
     return (
         <Container maxWidth="sm" sx={{ marginTop: "50px" }}>
             <Box sx={{ textAlign: "center" }}>
@@ -51,7 +55,7 @@ const Login = () => {
                         onChange={formik.handleChange}
                         value={formik.values.username}
                         margin="normal"
-                        error={formik.errors.username}
+                        // error={formik.errors.username}
                         helperText={
                             formik.errors.username
                                 ? formik.errors.username
@@ -67,7 +71,7 @@ const Login = () => {
                         onChange={formik.handleChange}
                         value={formik.values.password}
                         margin="normal"
-                        error={formik.errors.password}
+                        // error={formik.errors.password}
                         helperText={
                             formik.errors.password
                                 ? formik.errors.password
