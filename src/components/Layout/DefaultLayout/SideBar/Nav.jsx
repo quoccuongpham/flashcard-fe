@@ -1,4 +1,5 @@
 import { List, ListSubheader } from "@mui/material";
+import { useContext } from "react";
 // icons
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import NewspaperOutlinedIcon from "@mui/icons-material/NewspaperOutlined";
@@ -7,7 +8,34 @@ import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 
 import NavItem from "./NavItem";
-const Nav = () => {
+import { NavContext } from "../../../../context/NavContext";
+
+const Nav = ({ itemActive }) => {
+    const { navState, changeNav } = useContext(NavContext);
+
+    const navInfo = [
+        {
+            text: "Trang chủ",
+            icon: HomeOutlinedIcon,
+        },
+        {
+            text: "Đọc báo tiếng anh",
+            icon: NewspaperOutlinedIcon,
+        },
+        {
+            text: "Phân tích",
+            icon: AnalyticsOutlinedIcon,
+        },
+        {
+            text: "Hướng dẫn",
+            icon: ArticleOutlinedIcon,
+        },
+        {
+            text: "Cài đặt",
+            icon: SettingsOutlinedIcon,
+        },
+    ];
+
     return (
         <List
             sx={{
@@ -27,11 +55,20 @@ const Nav = () => {
                 </ListSubheader>
             }
         >
-            <NavItem
-                text="Trang chủ"
-                active={true}
-                icon={<HomeOutlinedIcon />}
-            />
+            {navInfo.map((navItem, index) => {
+                const Icon = navItem.icon;
+                const isActive = index === navState.itemActive;
+                return (
+                    <NavItem
+                        text={navItem.text}
+                        icon={<Icon />}
+                        key={index}
+                        active={isActive}
+                        id={index}
+                    />
+                );
+            })}
+            {/* <NavItem text={navInfo[0].text} active={true} icon={<Icon />} />
             <NavItem
                 text="Đọc báo tiếng anh"
                 active={false}
@@ -51,7 +88,7 @@ const Nav = () => {
                 text="Cài đặt"
                 active={false}
                 icon={<SettingsOutlinedIcon />}
-            />
+            /> */}
         </List>
     );
 };

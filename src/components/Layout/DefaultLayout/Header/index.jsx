@@ -6,31 +6,27 @@ import {
     Divider,
     Avatar,
     Chip,
-    List,
-    ListSubheader,
 } from "@mui/material";
 
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 // icons
 import DehazeRoundedIcon from "@mui/icons-material/DehazeRounded";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import NewspaperOutlinedIcon from "@mui/icons-material/NewspaperOutlined";
-import AnalyticsOutlinedIcon from "@mui/icons-material/AnalyticsOutlined";
-import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 
 import Logo from "../../Logo";
 import { SearchInput } from "../../../../styledComponent/Search";
 import ButtonStyled from "../../../../styledComponent/ButtonStyled";
-import NavItem from "../SideBar/NavItem";
 import Nav from "../SideBar/Nav";
+import { NavContext } from "../../../../context/NavContext";
+
 const Header = () => {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down("md"));
+
+    const { navState } = useContext(NavContext);
 
     const [open, setOpen] = useState(false);
     const handleOpen = (event) => {
@@ -89,7 +85,7 @@ const Header = () => {
                             transitionDuration={450}
                         >
                             <Box width="40vh">
-                                <Nav />
+                                <Nav itemActive={navState.itemActive} />
                             </Box>
                         </Drawer>
                     </Container>

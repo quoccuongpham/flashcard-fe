@@ -1,8 +1,13 @@
 import { ListItemIcon, ListItemText, ListItemButton } from "@mui/material";
-import { SendSharp } from "@mui/icons-material";
+import { useContext } from "react";
 import { deepPurple } from "@mui/material/colors";
-
-const NavItem = ({ text, active, icon }) => {
+import { NavContext } from "../../../../context/NavContext";
+const NavItem = ({ text, active, icon, id }) => {
+    const { navState, changeNav } = useContext(NavContext);
+    const handleClick = (id) => {
+        changeNav(id);
+        console.log(navState);
+    };
     return (
         <>
             <ListItemButton
@@ -16,6 +21,9 @@ const NavItem = ({ text, active, icon }) => {
                         backgroundColor: deepPurple[50],
                         color: deepPurple[500],
                     },
+                }}
+                onClick={() => {
+                    handleClick(id);
                 }}
             >
                 <ListItemIcon
