@@ -1,18 +1,39 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { CssBaseline } from "@mui/material";
+import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
+
 import axios from "axios";
 import { apiURL } from "./utils/constants.js";
+import App from "./App.jsx";
+// config axios
 axios.defaults.baseURL = apiURL;
-// axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.post["Content-Type"] =
     "application/x-www-form-urlencoded";
 
-import App from "./App.jsx";
+// custom theme mui
+const theme = createTheme({
+    typography: {
+        fontFamily: [
+            "Open Sans",
+            "-apple-system",
+            "Arial",
+            "BlinkMacSystemFont",
+            '"Segoe UI"',
+            "Roboto",
+            '"Helvetica Neue"',
+            "sans-serif",
+            '"Apple Color Emoji"',
+            '"Segoe UI Emoji"',
+            '"Segoe UI Symbol"',
+        ].join(","),
+    },
+});
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <CssBaseline />
-        <App />
+        <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <App />
+        </ThemeProvider>
     </React.StrictMode>
 );

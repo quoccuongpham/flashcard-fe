@@ -2,9 +2,9 @@
 import Welcome from "../page/Welcome/Welcome";
 import Login from "../page/Login/Login";
 import Register from "../page/Register/Register";
-
 // private page
 import Home from "../page/Home/Home";
+import Docs from "../page/Docs/Docs";
 
 // layout
 import DefaultLayout from "../components/Layout/DefaultLayout/DefaultLayout";
@@ -17,4 +17,5 @@ export const publicRoutes = [
 ];
 export const privateRoutes = [
     { path: "/", component: Home, layout: DefaultLayout },
+    { path: "/docs", component: Docs, layout: DefaultLayout },
 ];
