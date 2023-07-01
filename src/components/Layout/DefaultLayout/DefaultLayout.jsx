@@ -18,6 +18,8 @@ function DefaultLayout({ children }) {
                     justifyContent="space-between"
                     spacing={5}
                     sx={{ paddingRight: matches ? "20px" : "0px" }}
+                    minHeight={600}
+                    maxHeight={600}
                 >
                     {matches ? (
                         <Container
@@ -34,6 +36,7 @@ function DefaultLayout({ children }) {
                         sx={{
                             backgroundColor: "#eef2f6",
                             borderRadius: "20px",
+                            overflow: "scroll",
                         }}
                     >
                         {children}

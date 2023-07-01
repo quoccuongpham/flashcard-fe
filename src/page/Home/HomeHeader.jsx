@@ -9,12 +9,20 @@ const ChipStyled = styled(Chip)({
     fontWeight: 700,
 });
 const HomeHeader = () => {
+    const handleClick = () => {
+        console.log("clicked");
+    };
     return (
         <Stack direction="row" justifyContent="space-between">
             <Typography variant="h4" fontSize={25} fontWeight={600}>
                 Collection
             </Typography>
-            <ChipStyled icon={<AddCircleRoundedIcon />} label="new" />
+            <ChipStyled
+                icon={<AddCircleRoundedIcon />}
+                label="new"
+                onClick={handleClick}
+                size="medium"
+            />
         </Stack>
     );
 };

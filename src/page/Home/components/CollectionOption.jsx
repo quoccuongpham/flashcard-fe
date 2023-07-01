@@ -35,9 +35,8 @@ export default function CollectionOption() {
                     "aria-labelledby": "basic-button",
                 }}
             >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                <MenuItem onClick={handleClose}>Xóa</MenuItem>
+                <MenuItem onClick={handleClose}>Đổi tên</MenuItem>
             </Menu>
         </div>
     );

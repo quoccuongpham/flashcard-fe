@@ -12,7 +12,36 @@ const Home = () => {
             >
                 <HomeHeader />
             </Container>
-            <Stack direction="row" flexWrap="wrap" gap={2}>
+            <Stack
+                direction="row"
+                flexWrap="wrap"
+                gap={2}
+                justifyContent="space-around"
+            >
+                <Collection name="greeting" />
+                <Collection name="needed" />
+                <Collection name="stop" />
+                <Collection name="waste" />
+                <Collection name="greeting" />
+                <Collection name="needed" />
+                <Collection name="stop" />
+                <Collection name="waste" />
+                <Collection name="greeting" />
+                <Collection name="needed" />
+                <Collection name="stop" />
+                <Collection name="waste" />
+                <Collection name="greeting" />
+                <Collection name="needed" />
+                <Collection name="stop" />
+                <Collection name="waste" />
+                <Collection name="greeting" />
+                <Collection name="needed" />
+                <Collection name="stop" />
+                <Collection name="waste" />
+                <Collection name="greeting" />
+                <Collection name="needed" />
+                <Collection name="stop" />
+                <Collection name="waste" />
                 <Collection name="greeting" />
                 <Collection name="needed" />
                 <Collection name="stop" />

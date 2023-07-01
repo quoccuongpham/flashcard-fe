@@ -4,6 +4,7 @@ import Login from "../page/Login/Login";
 import Register from "../page/Register/Register";
 // private page
 import Home from "../page/Home/Home";
+import Collection from "../page/Collection";
 import Docs from "../page/Docs/Docs";
 
 // layout
@@ -17,5 +18,6 @@ export const publicRoutes = [
 ];
 export const privateRoutes = [
     { path: "/", component: Home, layout: DefaultLayout },
+    { path: "/collection", component: Collection, layout: DefaultLayout },
     { path: "/docs", component: Docs, layout: DefaultLayout },
 ];
