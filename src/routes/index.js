@@ -5,6 +5,9 @@ import Register from "../page/Register/Register";
 // private page
 import Home from "../page/Home/Home";
 import Collection from "../page/Collection";
+import News from "../page/News";
+import Analysis from "../page/Analysis";
+import Setting from "../page/Setting";
 import Docs from "../page/Docs/Docs";
 
 // layout
@@ -19,5 +22,8 @@ export const publicRoutes = [
 export const privateRoutes = [
     { path: "/", component: Home, layout: DefaultLayout },
     { path: "/collection", component: Collection, layout: DefaultLayout },
+    { path: "/news", component: News, layout: DefaultLayout },
+    { path: "/analysis", component: Analysis, layout: DefaultLayout },
     { path: "/docs", component: Docs, layout: DefaultLayout },
+    { path: "/setting", component: Setting, layout: DefaultLayout },
 ];

@@ -17,22 +17,27 @@ const Nav = ({ itemActive }) => {
         {
             text: "Trang chủ",
             icon: HomeOutlinedIcon,
+            path: "/",
         },
         {
             text: "Đọc báo tiếng anh",
             icon: NewspaperOutlinedIcon,
+            path: "/news",
         },
         {
             text: "Phân tích",
             icon: AnalyticsOutlinedIcon,
+            path: "/analysis",
         },
         {
             text: "Hướng dẫn",
             icon: ArticleOutlinedIcon,
+            path: "/docs",
         },
         {
             text: "Cài đặt",
             icon: SettingsOutlinedIcon,
+            path: "/setting",
         },
     ];
 
@@ -65,6 +70,7 @@ const Nav = ({ itemActive }) => {
                         key={index}
                         active={isActive}
                         id={index}
+                        path={navItem.path}
                     />
                 );
             })}
