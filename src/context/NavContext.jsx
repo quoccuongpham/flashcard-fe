@@ -4,7 +4,7 @@ export const NavContext = createContext();
 
 const NavContextProvider = ({ children }) => {
     const [navState, dispatch] = useReducer(navReducer, {
-        itemActive: 0,
+        itemActive: 0, // id of item is active
     });
     const changeNav = (navItemActive) => {
         dispatch({

@@ -1,7 +1,14 @@
-import { Button, TextField, Container, Stack } from "@mui/material";
+import { Container, Stack } from "@mui/material";
+import { useEffect, useContext } from "react";
 import Collection from "./Collection";
 import HomeHeader from "./HomeHeader";
+import { CollectionContext } from "../../context/CollectionContext";
 const Home = () => {
+    const { collectionState, loadCollection } = useContext(CollectionContext);
+    useEffect(() => {
+        loadCollection();
+    }, []);
+
     return (
         <Container maxWidth={false} disableGutters={false}>
             <Container
@@ -16,40 +23,18 @@ const Home = () => {
                 direction="row"
                 flexWrap="wrap"
                 gap={2}
-                justifyContent="space-around"
+                justifyContent="left"
             >
-                <Collection name="greeting" />
-                <Collection name="needed" />
-                <Collection name="stop" />
-                <Collection name="waste" />
-                <Collection name="greeting" />
-                <Collection name="needed" />
-                <Collection name="stop" />
-                <Collection name="waste" />
-                <Collection name="greeting" />
-                <Collection name="needed" />
-                <Collection name="stop" />
-                <Collection name="waste" />
-                <Collection name="greeting" />
-                <Collection name="needed" />
-                <Collection name="stop" />
-                <Collection name="waste" />
-                <Collection name="greeting" />
-                <Collection name="needed" />
-                <Collection name="stop" />
-                <Collection name="waste" />
-                <Collection name="greeting" />
-                <Collection name="needed" />
-                <Collection name="stop" />
-                <Collection name="waste" />
-                <Collection name="greeting" />
-                <Collection name="needed" />
-                <Collection name="stop" />
-                <Collection name="waste" />
-                <Collection name="greeting" />
-                <Collection name="needed" />
-                <Collection name="stop" />
-                <Collection name="waste" />
+                {collectionState.collections ? (
+                    collectionState.collections.map((collection, index) => (
+                        <Collection
+                            name={collection.name}
+                            key={index}
+                        ></Collection>
+                    ))
+                ) : (
+                    <>Loading</>
+                )}
             </Stack>
         </Container>
     );
