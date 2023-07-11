@@ -8,7 +8,7 @@ const Home = () => {
     useEffect(() => {
         loadCollection();
     }, []);
-
+    console.log(collectionState);
     return (
         <Container maxWidth={false} disableGutters={false}>
             <Container
@@ -30,6 +30,7 @@ const Home = () => {
                         <Collection
                             name={collection.name}
                             key={index}
+                            collection_id={collection.id}
                         ></Collection>
                     ))
                 ) : (

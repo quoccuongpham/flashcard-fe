@@ -4,7 +4,7 @@ import ProgressBar from "@ramonak/react-progress-bar";
 
 import CollectionOption from "./components/CollectionOption";
 import LinkStyled from "../../styledComponent/LinkStyled";
-const Collection = ({ name }) => {
+const Collection = ({ name, collection_id }) => {
     return (
         <Paper
             elevation={0}
@@ -30,7 +30,7 @@ const Collection = ({ name }) => {
                 <Typography variant="p" fontSize={14}>
                     29/6/2023
                 </Typography>
-                <CollectionOption />
+                <CollectionOption collection_id={collection_id} />
             </Stack>
             <LinkStyled to="/collection">
                 <Typography

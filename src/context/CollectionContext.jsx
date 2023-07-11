@@ -28,10 +28,45 @@ const CollectionContextProvider = ({ children }) => {
 
         return result.data.success;
     };
+    const deleteCollection = async (id) => {
+        const result = await axios.delete(`${apiURL}/collection`, {
+            data: {
+                collection_id: id,
+            },
+        });
+
+        if (result.data.success) {
+            dispatch({
+                type: "DELETE_COLLECTION",
+                payload: {
+                    id: id,
+                },
+            });
+        }
+    };
+    const changeName = async (id, name, des) => {
+        const result = await axios.put(`${apiURL}/collection`, {
+            collection_id: id,
+            collection_name: name,
+            collection_des: des,
+        });
+        if (result.data.success) {
+            dispatch({
+                type: "CHANGE_NAME",
+                payload: {
+                    id,
+                    name,
+                    des,
+                },
+            });
+        }
+    };
     const collectionData = {
         collectionState,
         loadCollection,
         newCollection,
+        deleteCollection,
+        changeName,
     };
     return (
         <CollectionContext.Provider value={collectionData}>

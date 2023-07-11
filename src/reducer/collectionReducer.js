@@ -14,10 +14,27 @@ export const collectionReducer = (state, action) => {
             };
         }
         case "DELETE_COLLECTION": {
+            //? payload: {id}
             const collections = [...state.collections];
             const new_collections = collections.filter((element) => {
-                return element.id !== payload.id;
+                return element.id !== action.payload.id;
             });
+            return {
+                ...state,
+                collections: new_collections,
+            };
+        }
+        case "CHANGE_NAME": {
+            //? payload: {id, name, des}
+            const collections = [...state.collections];
+            const new_collections = collections.map((collection) => {
+                if (collection.id === action.payload.id) {
+                    collection.name = action.payload.name;
+                    collection.description = action.payload.des;
+                }
+                return collection;
+            });
+
             return {
                 ...state,
                 collections: new_collections,
