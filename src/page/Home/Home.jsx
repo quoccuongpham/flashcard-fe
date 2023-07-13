@@ -8,7 +8,6 @@ const Home = () => {
     useEffect(() => {
         loadCollection();
     }, []);
-    console.log(collectionState);
     return (
         <Container maxWidth={false} disableGutters={false}>
             <Container

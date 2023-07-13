@@ -9,6 +9,7 @@ import News from "../page/News";
 import Analysis from "../page/Analysis";
 import Setting from "../page/Setting";
 import Docs from "../page/Docs/Docs";
+import AddFlashCard from "../page/AddFlashcard";
 
 // layout
 import DefaultLayout from "../components/Layout/DefaultLayout/DefaultLayout";
@@ -26,4 +27,5 @@ export const privateRoutes = [
     { path: "/analysis", component: Analysis, layout: DefaultLayout },
     { path: "/docs", component: Docs, layout: DefaultLayout },
     { path: "/setting", component: Setting, layout: DefaultLayout },
+    { path: "/addflashcard", component: AddFlashCard, layout: DefaultLayout },
 ];

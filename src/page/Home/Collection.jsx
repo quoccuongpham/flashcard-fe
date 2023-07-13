@@ -32,7 +32,7 @@ const Collection = ({ name, collection_id }) => {
                 </Typography>
                 <CollectionOption collection_id={collection_id} />
             </Stack>
-            <LinkStyled to="/collection">
+            <LinkStyled to="/collection" state={{ collection_id }}>
                 <Typography
                     component="div"
                     variant="p"
