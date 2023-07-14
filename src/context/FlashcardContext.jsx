@@ -8,14 +8,22 @@ export const FlashcardContext = createContext();
 const FlashcardContextProvider = ({ children }) => {
     const [flashcardState, dispatch] = useReducer(flashcardReducer, {
         flashcards: [],
+        learn_flashcards: [],
     });
     const loadFlashcard = async (collection_id) => {
         const {
             data: { flashcards },
         } = await axios.get(`${apiURL}/flashcard/${collection_id}`);
+
         dispatch({ type: "LOAD_FLASHCARD", payload: { flashcards } });
     };
-
+    const loadLearnFlashcard = async (collection_id) => {
+        const {
+            data: { flashcard_info },
+        } = await axios.get(`${apiURL}/memorize/${collection_id}`);
+        console.log(collection_id);
+        dispatch({ type: "LOAD_LEARN_FLASHCARD", payload: { flashcard_info } });
+    };
     const newFlashcard = async (formData) => {
         const result = await axios.post(`${apiURL}/flashcard`, formData);
         if (result.data.success) {
@@ -63,6 +71,7 @@ const FlashcardContextProvider = ({ children }) => {
         flashcardState,
         loadFlashcard,
         newFlashcard,
+        loadLearnFlashcard,
         // deleteCollection,
         // changeName,
     };

@@ -35,7 +35,18 @@ const Collection = () => {
                 >
                     Thêm
                 </Button>
-                <Button variant="contained">Học</Button>
+                <Button
+                    variant="contained"
+                    onClick={() => {
+                        return navigate("/learn", {
+                            state: {
+                                collection_id: state.collection_id,
+                            },
+                        });
+                    }}
+                >
+                    Học
+                </Button>
             </Box>
             <Stack direction="column" gap={1}>
                 {flashcardState.flashcards.map((value, index) => {

@@ -10,9 +10,11 @@ import Analysis from "../page/Analysis";
 import Setting from "../page/Setting";
 import Docs from "../page/Docs/Docs";
 import AddFlashCard from "../page/AddFlashcard";
+import Learn from "../page/Learn";
 
 // layout
 import DefaultLayout from "../components/Layout/DefaultLayout/DefaultLayout";
+
 import IntroLayout from "../components/Layout/IntroLayout/IntroLayout";
 
 export const publicRoutes = [
@@ -28,4 +30,5 @@ export const privateRoutes = [
     { path: "/docs", component: Docs, layout: DefaultLayout },
     { path: "/setting", component: Setting, layout: DefaultLayout },
     { path: "/addflashcard", component: AddFlashCard, layout: DefaultLayout },
+    { path: "/learn", component: Learn, layout: DefaultLayout },
 ];

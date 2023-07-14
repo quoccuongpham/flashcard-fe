@@ -7,6 +7,12 @@ export const flashcardReducer = (state, action) => {
                 flashcards: action.payload.flashcards,
             };
         }
+        case "LOAD_LEARN_FLASHCARD": {
+            return {
+                ...state,
+                learn_flashcards: action.payload.flashcard_info,
+            };
+        }
         case "ADD_FLASHCARD": {
             const flashcards = [...state.flashcards, action.payload.flashcard];
             return {
