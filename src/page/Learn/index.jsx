@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useContext, useEffect } from "react";
-import { Container, Box } from "@mui/material";
-import styled from "@emotion/styled";
+import { Container } from "@mui/material";
+
 import { FlashcardContext } from "../../context/FlashcardContext";
 import LearnContextProvider from "../../context/LearnContext";
 import Card from "./Card";
@@ -12,7 +12,6 @@ const Learn = () => {
     useEffect(() => {
         loadLearnFlashcard(state.collection_id);
     }, []);
-    const { learn_flashcards } = flashcardState;
     return (
         <LearnContextProvider>
             <Container
@@ -24,11 +23,7 @@ const Learn = () => {
                     paddingTop: 4,
                 }}
             >
-                <Card
-                    flashcard_info={
-                        learn_flashcards[learn_flashcards.length - 1]
-                    }
-                />
+                <Card collection_id={state.collection_id} />
                 <Container>
                     <Evaluate />
                 </Container>

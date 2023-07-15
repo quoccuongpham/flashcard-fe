@@ -21,7 +21,6 @@ const FlashcardContextProvider = ({ children }) => {
         const {
             data: { flashcard_info },
         } = await axios.get(`${apiURL}/memorize/${collection_id}`);
-        console.log(collection_id);
         dispatch({ type: "LOAD_LEARN_FLASHCARD", payload: { flashcard_info } });
     };
     const newFlashcard = async (formData) => {

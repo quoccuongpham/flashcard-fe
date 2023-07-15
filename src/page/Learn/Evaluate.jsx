@@ -1,21 +1,51 @@
 import { Stack, Button } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
 import { useContext } from "react";
 import { LearnContext } from "../../context/LearnContext";
 const Evaluate = () => {
-    const { evaluateCard } = useContext(LearnContext);
-    return (
+    const { cardState, evaluateCard } = useContext(LearnContext);
+    const data = {
+        id: cardState?.currentCard?.id,
+        collection_id: cardState?.currentCard?.collection_id,
+        value: "",
+    };
+    return cardState.currentCard !== undefined ? (
         <Stack direction="row" justifyContent="center" gap={2} marginTop={3}>
-            <Button variant="contained" color="error" onClick={evaluateCard}>
+            <LoadingButton
+                variant="contained"
+                color="error"
+                disabled={cardState.isLoading}
+                onClick={() => {
+                    data.value = "again";
+                    evaluateCard(data);
+                }}
+            >
                 Again
-            </Button>
-            <Button variant="contained" color="info" onClick={evaluateCard}>
+            </LoadingButton>
+            <LoadingButton
+                variant="contained"
+                color="info"
+                disabled={cardState.isLoading}
+                onClick={() => {
+                    data.value = "hard";
+                    evaluateCard(data);
+                }}
+            >
                 Hard
-            </Button>
-            <Button variant="contained" color="success" onClick={evaluateCard}>
+            </LoadingButton>
+            <LoadingButton
+                variant="contained"
+                color="success"
+                disabled={cardState.isLoading}
+                onClick={() => {
+                    data.value = "easy";
+                    evaluateCard(data);
+                }}
+            >
                 Good
-            </Button>
+            </LoadingButton>
         </Stack>
-    );
+    ) : null;
 };
 
 export default Evaluate;

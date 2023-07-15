@@ -1,10 +1,14 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import "./Card.css";
 import { LearnContext } from "../../context/LearnContext";
-const Card = ({ flashcard_info }) => {
-    const { cardState, flipCard } = useContext(LearnContext);
+
+const Card = ({ collection_id }) => {
+    const { cardState, flipCard, loadCard } = useContext(LearnContext);
+    useEffect(() => {
+        loadCard(collection_id);
+    }, []);
     console.log(cardState);
-    return flashcard_info ? (
+    return cardState.currentCard !== undefined ? (
         <div className="container">
             <div
                 className={cardState.isFlip ? "card flipCard" : "card"}
@@ -13,22 +17,24 @@ const Card = ({ flashcard_info }) => {
                 <div className="front">
                     {/* {cardInfo.img && <div className='img'></div>} */}
                     <div className="text">
-                        <p>{flashcard_info.word}</p>
+                        <p>{cardState.currentCard.word}</p>
                     </div>
                 </div>
                 <div className="back">
-                    <p className="vocabulary">{flashcard_info.word}</p>
-                    <p className="wordType">{flashcard_info.word_type}</p>
-                    <p className="pronuciation">
-                        {flashcard_info.pronunciation}
+                    <p className="vocabulary">{cardState.currentCard.word}</p>
+                    <p className="wordType">
+                        ({cardState.currentCard.word_type})
                     </p>
-                    <p className="meaning">{flashcard_info.mean}</p>
-                    <p className="example">{flashcard_info.example}</p>
+                    <p className="pronuciation">
+                        {cardState.currentCard.pronunciation}
+                    </p>
+                    <p className="meaning">{cardState.currentCard.mean}</p>
+                    <p className="example">{cardState.currentCard.example}</p>
                 </div>
             </div>
         </div>
     ) : (
-        <p>loading</p>
+        <div>Bạn đã học hết flashcard</div>
     );
 };
 

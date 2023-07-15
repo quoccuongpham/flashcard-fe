@@ -7,6 +7,8 @@ import {
     Button,
 } from "@mui/material";
 import { useFormik } from "formik";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 const validate = (values) => {
     const errors = {};
@@ -31,6 +33,7 @@ const validate = (values) => {
 };
 
 const Register = () => {
+    const { register } = useContext(AuthContext);
     const formik = useFormik({
         initialValues: {
             username: "",
@@ -39,7 +42,11 @@ const Register = () => {
         },
         validate,
         onSubmit: (values) => {
-            console.log(values);
+            const dataForm = {
+                username: values.username,
+                password: values.password,
+            };
+            register(dataForm);
         },
     });
 

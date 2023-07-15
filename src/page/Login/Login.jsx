@@ -35,7 +35,6 @@ const Login = () => {
         },
         validate,
         onSubmit: async (values) => {
-            console.log(values);
             const info = await login(values);
         },
     });
