@@ -21,6 +21,7 @@ import { SearchInput } from "../../../../styledComponent/Search";
 import ButtonStyled from "../../../../styledComponent/ButtonStyled";
 import Nav from "../SideBar/Nav";
 import { NavContext } from "../../../../context/NavContext";
+import AccountMenu from "../../../utils/AccountMenu";
 
 const Header = () => {
     const theme = useTheme();
@@ -110,9 +111,10 @@ const Header = () => {
                             </Box>
                             <Box>
                                 <Stack>
-                                    <Chip
+                                    <AccountMenu />
+                                    {/* <Chip
                                         // label={<SettingsIcon />}
-                                        label="avatar"
+                                        label="User"
                                         // icon={<SettingsIcon />}
                                         size="medium"
                                         avatar={
@@ -127,7 +129,8 @@ const Header = () => {
                                             width: "92px",
                                             height: "48px",
                                         }}
-                                    />
+                                        onClick={() => {}}
+                                    /> */}
                                 </Stack>
                             </Box>
                         </Stack>

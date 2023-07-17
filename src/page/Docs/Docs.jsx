@@ -3,23 +3,12 @@ import AlertStyled from "../../styledComponent/AlertStyled";
 
 const Docs = () => {
     const [alert, setAlert] = useState({
-        type: "error",
-        mess: "Thang cong ^^",
+        type: "info",
+        mess: "Chức năng đang được phát triển",
         isOpen: true,
     });
     return (
         <div>
-            <button
-                onClick={() => {
-                    setAlert({
-                        ...alert,
-                        mess: Math.random().toString(),
-                        isOpen: true,
-                    });
-                }}
-            >
-                open
-            </button>
             <AlertStyled {...alert} setAlert={setAlert} />
         </div>
     );

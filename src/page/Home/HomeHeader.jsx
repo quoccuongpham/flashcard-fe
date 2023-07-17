@@ -1,21 +1,11 @@
-import {
-    Stack,
-    Typography,
-    Chip,
-    Modal,
-    Box,
-    TextField,
-    Button,
-} from "@mui/material";
+import { Stack, Typography, Chip, Modal, Box, TextField } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
 import { deepPurple } from "@mui/material/colors";
 import styled from "@emotion/styled";
 import { useState, useContext } from "react";
 import { useFormik } from "formik";
-import axios from "axios";
 
-import { apiURL } from "../../utils/constants";
 import { CollectionContext } from "../../context/CollectionContext";
 const ChipStyled = styled(Chip)({
     backgroundColor: deepPurple[50],
@@ -43,8 +33,8 @@ const HomeHeader = () => {
     const handleCloseModal = () => {
         setOpenModal(false);
     };
-    const { newCollection } = useContext(CollectionContext);
 
+    const { newCollection } = useContext(CollectionContext);
     // form
     const createCollection = useFormik({
         initialValues: {
