@@ -1,14 +1,8 @@
-import {
-    Container,
-    Box,
-    Typography,
-    Stack,
-    TextField,
-    Button,
-} from "@mui/material";
+import { Container, Box, Typography, TextField, Button } from "@mui/material";
 import { useFormik } from "formik";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import AlertStyled from "../../styledComponent/AlertStyled";
 
 const validate = (values) => {
     const errors = {};
@@ -33,6 +27,12 @@ const validate = (values) => {
 };
 
 const Register = () => {
+    const [alert, setAlert] = useState({
+        type: "info",
+        mess: "mess",
+        isOpen: false,
+    });
+
     const { register } = useContext(AuthContext);
     const formik = useFormik({
         initialValues: {
@@ -41,17 +41,30 @@ const Register = () => {
             rePassword: "",
         },
         validate,
-        onSubmit: (values) => {
+        onSubmit: async (values) => {
             const dataForm = {
                 username: values.username,
                 password: values.password,
             };
-            register(dataForm);
+            const response = await register(dataForm);
+            if (response.data.success) {
+                setAlert({
+                    type: "info",
+                    mess: "Tạo tài khoản thành công",
+                    isOpen: true,
+                });
+            } else {
+                setAlert({
+                    type: "error",
+                    mess: response.data.message,
+                    isOpen: true,
+                });
+            }
         },
     });
-
     return (
         <Container maxWidth="sm" sx={{ marginTop: "50px" }}>
+            <AlertStyled {...alert} setAlert={setAlert} />
             <Box sx={{ textAlign: "center" }}>
                 <Typography variant="h3" marginBottom={4}>
                     Register
